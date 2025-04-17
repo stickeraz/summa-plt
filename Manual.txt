@@ -1,0 +1,28 @@
+Element	Function / Purpose
+;@:	Initialization command, often tells the plotter a new job is starting.
+SET MARKER_X_DIS	Sets the X-axis distance between OPOS markers (in plotter units).
+SET MARKER_Y_DIS	Sets the Y-axis distance between OPOS markers.
+SET MARKER_X_SIZE	Size of each marker along the X-axis (used for OPOS alignment).
+SET MARKER_Y_SIZE	Size of each marker along the Y-axis.
+SET MARKER_X_N	Number of markers along X-axis (e.g., 2 markers = front & back).
+LOAD_MARKERS.	Command to tell the cutter to read/load OPOS marks for registration.
+END.	Ends the initialization/config block.
+;:HOA,ECN,U,	Configuration or internal mode command. Often repeated. Meaning varies by machine.
+,U	Pen Up – move to a coordinate without cutting.
+,D	Pen Down – start cutting from this point onward.
+X,Y values	Coordinate values in plotter units (1 unit = 0.025 mm if 120 units = 3 mm).
+P6	Tool/Pen change command. Summa interprets this as switching cut type:
+→ Usually from kiss-cut (light) to die-cut (deep)
+e@	End of the plot file. Resets or finishes job.
+🛠️ Cut Path Convention
+Before P6: Usually interpreted as kiss cut.
+
+After P6: Treated as die cut.
+
+Summa uses layers or tool commands like P1, P2, ..., P6 to control cut pressure/tools.
+
+📐 Units and Scaling
+Based on 120 units = 3 mm, Summa plotters often use 1 unit = 0.025 mm.
+
+All coordinates are in this unit system and must be scaled accordingly when converting from Illustrator.
+
